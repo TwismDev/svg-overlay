@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { experimental_useEffectEvent as useEffectEvent } from "react";
-import "./home.css";
-import { RadioCard } from "./components/RadioCard";
-import { Multi } from "./components/Multi";
-import { Overlay } from "./components/Overlay";
-import { useGlobalContext } from "./components/Context";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import { Helmet } from "react-helmet";
+import { useEffect } from "react"
+import { experimental_useEffectEvent as useEffectEvent } from "react"
+import "./home.css"
+import { RadioCard } from "./components/RadioCard"
+import { Multi } from "./components/Multi"
+import { Overlay } from "./components/Overlay"
+import { useGlobalContext } from "./components/Context"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSpinner } from "@fortawesome/free-solid-svg-icons"
+import axios from "axios"
+import { Helmet } from "react-helmet"
 
 function App() {
   const {
@@ -29,20 +29,23 @@ function App() {
     selected,
     link,
     setLink,
-  } = useGlobalContext();
+  } = useGlobalContext()
 
-  let queryParams = new
-    URLSearchParams(window.location.search)
-  setMatchId(queryParams.get('matchId'))
-  
+  useEffect(() => {
+    axios.get("https://twism.vercel.app/overlay", null)
+      .then(function (response) {
+        setMatchId(response.data)
+      })
+  }, [])
+
   const handleMatchIdChange = (e) => {
     // console.log(e.target.value);
-    setMatchId(e.target.value);
-  };
+    setMatchId(e.target.value)
+  }
   const handleCompIdChange = (e) => {
     // console.log(e.target.value);
-    setCompId(e.target.value);
-  };
+    setCompId(e.target.value)
+  }
 
   function Post() {
     if (selected === "Single") {
@@ -53,14 +56,14 @@ function App() {
           },
         })
         .then(function (response) {
-          setCopy(response.data);
-          setLink(response.data);
+          setCopy(response.data)
+          setLink(response.data)
           var res = Object.keys(response.data).map(function (key) {
-            return response.data[key];
-          });
-          setStats(res);
+            return response.data[key]
+          })
+          setStats(res)
         })
-        .catch((err) => console.warn(err));
+        .catch((err) => console.warn(err))
     } else if (selected === "Multi") {
       axios
         .post("https://twism.vercel.app/drid", null, {
@@ -69,14 +72,14 @@ function App() {
           },
         })
         .then(function (response) {
-          setLink(response.data);
-          setCopy(response.data);
+          setLink(response.data)
+          setCopy(response.data)
           var res = Object.keys(response.data).map(function (key) {
-            return response.data[key];
-          });
-          setStats(res);
+            return response.data[key]
+          })
+          setStats(res)
         })
-        .catch((err) => console.warn(err));
+        .catch((err) => console.warn(err))
     } else if (selected === "Rmu") {
       axios
         .post("https://twism.vercel.app/rmu", null, {
@@ -86,43 +89,43 @@ function App() {
           },
         })
         .then(function (response) {
-          setLink(response.data);
+          setLink(response.data)
           var res = Object.keys(response.data).map(function (key) {
-            return response.data[key];
-          });
-          setStats(res);
-        });
+            return response.data[key]
+          })
+          setStats(res)
+        })
     }
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
-        axios
-          .post("https://twism.vercel.app/ids", null, {
-            params: {
-              matchId,
-            },
+      axios
+        .post("https://twism.vercel.app/ids", null, {
+          params: {
+            matchId,
+          },
+        })
+        .then(function (response) {
+          setCopy(response.data)
+          setLink(response.data)
+          var res = Object.keys(response.data).map(function (key) {
+            return response.data[key]
           })
-          .then(function (response) {
-            setCopy(response.data);
-            setLink(response.data);
-            var res = Object.keys(response.data).map(function (key) {
-              return response.data[key];
-            });
-            setStats(res);
-          })
-          .catch((err) => console.warn(err));
-    }, 10000);
+          setStats(res)
+        })
+        .catch((err) => console.warn(err))
+    }, 10000)
     return () => {
-      clearInterval(interval);
-    };
-  }, [isLoading, matchId]);
+      clearInterval(interval)
+    }
+  }, [isLoading, matchId])
 
   const HandleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    Post();
-  };
+    e.preventDefault()
+    setIsLoading(true)
+    Post()
+  }
 
   // useEffect(() => {
   // 	const interval = setInterval(() => {
@@ -207,20 +210,20 @@ function App() {
   //   (!stats[1] && stats[0] && selected === "Single") ||
   //   selected === "Rmu"
   // )
-    return (
-      <>
-        <Helmet>
-          <style>
-            {
-              "body { background-image: none; background-color: transparent !important; }"
-            }
-          </style>
-        </Helmet>
-        <div className="container-3">
-          <Overlay />
-        </div>
-      </>
-    );
+  return (
+    <>
+      <Helmet>
+        <style>
+          {
+            "body { background-image: none; background-color: transparent !important; }"
+          }
+        </style>
+      </Helmet>
+      <div className="container-3">
+        <Overlay />
+      </div>
+    </>
+  )
   // else if (stats[1] && selected === "Multi")
   //   return (
   //     <>
@@ -243,4 +246,4 @@ function App() {
   //   );
 }
 
-export default App;
+export default App
