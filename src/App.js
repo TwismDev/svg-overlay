@@ -84,7 +84,7 @@ function App() {
   useEffect(() => {
     axios.get("https://twism.vercel.app/overlay", null)
       .then(function (response) {
-        console.log(response.data)
+        // console.log(response.data[0].test)
         setMatchId(response.data[0].test)
       })
   }, [])
