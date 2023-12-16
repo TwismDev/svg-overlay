@@ -96,6 +96,8 @@ function App() {
       })
   }
 
+  getStats()
+
   useEffect(() => {
     const interval = setInterval(() => {
       getStats()
