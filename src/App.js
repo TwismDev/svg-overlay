@@ -88,15 +88,17 @@ function App() {
   //   appPost()
   // }, [isLoading, matchId])
 
+  function getStats() {
+    axios.get("https://twism.vercel.app/overlay", null)
+      .then(function (response) {
+        // console.log(response.data[0].test)
+        setMatchId(response.data[0].test)
+      })
+  }
+
   useEffect(() => {
     const interval = setInterval(() => {
-      function getStats() {
-        axios.get("https://twism.vercel.app/overlay", null)
-          .then(function (response) {
-            // console.log(response.data[0].test)
-            setMatchId(response.data[0].test)
-          })
-      }
+      getStats()
     }, 10000)
     return () => {
       clearInterval(interval)
