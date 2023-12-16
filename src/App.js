@@ -40,60 +40,67 @@ function App() {
     setCompId(e.target.value)
   }
 
-  function Post() {
-    axios
-      .post("https://twism.vercel.app/ids", null, {
-        params: {
-          matchId,
-        },
-      })
-      .then(function (response) {
-        setCopy(response.data)
-        setLink(response.data)
-        var res = Object.keys(response.data).map(function (key) {
-          return response.data[key]
-        })
-        setStats(res)
-      })
-      .catch((err) => console.warn(err))
-  }
+  // function Post() {
+  //   axios
+  //     .post("https://twism.vercel.app/ids", null, {
+  //       params: {
+  //         matchId,
+  //       },
+  //     })
+  //     .then(function (response) {
+  //       setCopy(response.data)
+  //       setLink(response.data)
+  //       var res = Object.keys(response.data).map(function (key) {
+  //         return response.data[key]
+  //       })
+  //       setStats(res)
+  //     })
+  //     .catch((err) => console.warn(err))
+  // }
 
-  const appPost = () => {
+  // const appPost = () => {
+  //   const interval = setInterval(() => {
+  //     axios
+  //       .post("https://twism.vercel.app/ids", null, {
+  //         params: {
+  //           matchId,
+  //         },
+  //       })
+  //       .then(function (response) {
+  //         setCopy(response.data)
+  //         setLink(response.data)
+  //         var res = Object.keys(response.data).map(function (key) {
+  //           return response.data[key]
+  //         })
+  //         setStats(res)
+  //       })
+  //       .catch((err) => console.warn(err))
+  //   }, 10000)
+
+  //   return () => {
+  //     clearInterval(interval)
+  //   }
+  // }
+
+  // appPost()
+
+  // useEffect(() => {
+  //   appPost()
+  // }, [isLoading, matchId])
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      axios
-        .post("https://twism.vercel.app/ids", null, {
-          params: {
-            matchId,
-          },
-        })
-        .then(function (response) {
-          setCopy(response.data)
-          setLink(response.data)
-          var res = Object.keys(response.data).map(function (key) {
-            return response.data[key]
+      function getStats() {
+        axios.get("https://twism.vercel.app/overlay", null)
+          .then(function (response) {
+            // console.log(response.data[0].test)
+            setMatchId(response.data[0].test)
           })
-          setStats(res)
-        })
-        .catch((err) => console.warn(err))
+      }
     }, 10000)
-
     return () => {
       clearInterval(interval)
     }
-  }
-
-  appPost()
-
-  useEffect(() => {
-    appPost()
-  }, [isLoading, matchId])
-
-  useEffect(() => {
-    axios.get("https://twism.vercel.app/overlay", null)
-      .then(function (response) {
-        // console.log(response.data[0].test)
-        setMatchId(response.data[0].test)
-      })
   }, [])
 
   const HandleSubmit = (e) => {
@@ -186,22 +193,22 @@ function App() {
   //   selected === "Rmu"
   // )
 
-  if (stats[0]) {
-    return (
-      <>
-        <Helmet>
-          <style>
-            {
-              "body { background-image: none; background-color: transparent !important; }"
-            }
-          </style>
-        </Helmet>
-        <div className="container-3">
-          <Overlay />
-        </div>
-      </>
-    )
-  }
+  // if (stats[0]) {
+  return (
+    <>
+      <Helmet>
+        <style>
+          {
+            "body { background-image: none; background-color: transparent !important; }"
+          }
+        </style>
+      </Helmet>
+      <div className="container-3">
+        <Overlay />
+      </div>
+    </>
+  )
+  // }
   // else if (stats[1] && selected === "Multi")
   //   return (
   //     <>
