@@ -52,7 +52,7 @@ const SvgTeam = () => {
 			<text id="p1score" textAnchor='middle' transform="translate(642 45.5)" style={{ isolation: "isolate", fontSize: "50px", fill: "#fff", fontFamily: "semibold" }}>
 				{stats[0] ? stats[0].homescore : ''}</text>
 			<text id="raceto-2" textAnchor='middle' data-name="raceto" transform="translate(812.43 41)" style={{ isolation: "isolate", textAlign: "center", textAnchor: "center", fontSize: "30px", fill: "#231f20", fontFamily: "semibold" }}>
-				{stats[0].raceto ? stats[0].raceto : ''}</text >
+				Race to</text >
 		</svg>
 	)
 }
