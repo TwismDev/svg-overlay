@@ -44,15 +44,15 @@ const SvgTeam = () => {
 			<text id="timer-2" textAnchor='middle' data-name="timer" transform="translate(663.94 101.4)" style={{ isolation: "isolate", fontSize: "40px", fill: "#fff", fontFamily: "semibold" }}>
 			</text>
 			<text id="p1name" textAnchor='middle' transform="translate(323.47 42.5)" style={{ isolation: "isolate", fontSize: "40px", fill: "#fff", fontFamily: "semibold" }}>
-				{stats[0].hometeamlabel}</text>
+				{stats[0] ? stats[0].hometeamlabel : ''}</text>
 			<text id="p2name" textAnchor='middle' transform="translate(1289.85 42.5)" style={{ isolation: "isolate", fontSize: "40px", fill: "#fff", fontFamily: "semibold" }}>
-				{stats[0].awayteamlabel}</text>
+				{stats[0] ? stats[0].awayteamlabel : ''}</text>
 			<text id="p2score" textAnchor='middle' transform="translate(971.77 45.5)" style={{ isolation: "isolate", fontSize: "50px", fill: "#fff", fontFamily: "semibold" }}>
-				{stats[0].awayscore}</text>
+				{stats[0] ? stats[0].awayscore : ''}</text>
 			<text id="p1score" textAnchor='middle' transform="translate(642 45.5)" style={{ isolation: "isolate", fontSize: "50px", fill: "#fff", fontFamily: "semibold" }}>
-				{stats[0].homescore}</text>
+				{stats[0] ? stats[0].homescore : ''}</text>
 			<text id="raceto-2" textAnchor='middle' data-name="raceto" transform="translate(812.43 41)" style={{ isolation: "isolate", textAlign: "center", textAnchor: "center", fontSize: "30px", fill: "#231f20", fontFamily: "semibold" }}>
-				Race to 15{/*	{stats[0].raceto} */}</text>
+				{stats[0].raceto ? stats[0].raceto : ''}</text >
 		</svg>
 	)
 }
