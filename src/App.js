@@ -107,11 +107,11 @@ function App() {
     }
   }, [])
 
-  const HandleSubmit = (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    Post()
-  }
+  // const HandleSubmit = (e) => {
+  //   e.preventDefault()
+  //   setIsLoading(true)
+  //   Post()
+  // }
 
   // useEffect(() => {
   // 	const interval = setInterval(() => {
