@@ -58,7 +58,7 @@ function App() {
       .catch((err) => console.warn(err))
   }
 
-  useEffect(() => {
+  const appPost = () => {
     const interval = setInterval(() => {
       axios
         .post("https://twism.vercel.app/ids", null, {
@@ -76,9 +76,16 @@ function App() {
         })
         .catch((err) => console.warn(err))
     }, 10000)
+
     return () => {
       clearInterval(interval)
     }
+  }
+
+  appPost()
+
+  useEffect(() => {
+    appPost()
   }, [isLoading, matchId])
 
   useEffect(() => {
