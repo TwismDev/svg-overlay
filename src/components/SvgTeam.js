@@ -158,7 +158,7 @@ const SvgTeam = () => {
 					}}
 					transform="translate(675 105)"
 				>
-					00:59
+					00:00
 				</text>
 				<text
 					style={{
@@ -173,7 +173,7 @@ const SvgTeam = () => {
 					}}
 					transform="translate(323.48 40)"
 				>
-					{stats[0] ? stats[0].hometeamlabel : 'damien'}
+					{stats[0] ? stats[0].hometeamlabel : ''}
 				</text>
 				<text
 					style={{
@@ -188,7 +188,7 @@ const SvgTeam = () => {
 					}}
 					transform="translate(1289.85 40)"
 				>
-					{stats[0] ? stats[0].awayteamlabel : 'damien'}
+					{stats[0] ? stats[0].awayteamlabel : ''}
 				</text>
 				<text
 					style={{
@@ -202,7 +202,7 @@ const SvgTeam = () => {
 					}}
 					transform="translate(977.5 44)"
 				>
-					{stats[0] ? stats[0].awayscore : '11'}
+					{stats[0] ? stats[0].awayscore : ''}
 				</text>
 				<text
 					style={{
@@ -216,7 +216,7 @@ const SvgTeam = () => {
 					}}
 					transform="translate(648 44)"
 				>
-					{stats[0] ? stats[0].homescore : '11'}
+					{stats[0] ? stats[0].homescore : ''}
 				</text>
 				<text
 					data-name="raceto"
@@ -232,7 +232,7 @@ const SvgTeam = () => {
 					}}
 					transform="translate(815 40)"
 				>
-					Race to 15
+					Race to
 				</text>
 			</svg>
 		</>
