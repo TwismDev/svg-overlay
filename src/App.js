@@ -40,53 +40,53 @@ function App() {
     setCompId(e.target.value)
   }
 
-  // function Post() {
-  //   axios
-  //     .post("https://twism.vercel.app/ids", null, {
-  //       params: {
-  //         matchId,
-  //       },
-  //     })
-  //     .then(function (response) {
-  //       setCopy(response.data)
-  //       setLink(response.data)
-  //       var res = Object.keys(response.data).map(function (key) {
-  //         return response.data[key]
-  //       })
-  //       setStats(res)
-  //     })
-  //     .catch((err) => console.warn(err))
-  // }
+  function Post() {
+    axios
+      .post("https://twism.vercel.app/ids", null, {
+        params: {
+          matchId,
+        },
+      })
+      .then(function (response) {
+        setCopy(response.data)
+        setLink(response.data)
+        var res = Object.keys(response.data).map(function (key) {
+          return response.data[key]
+        })
+        setStats(res)
+      })
+      .catch((err) => console.warn(err))
+  }
 
-  // const appPost = () => {
-  //   const interval = setInterval(() => {
-  //     axios
-  //       .post("https://twism.vercel.app/ids", null, {
-  //         params: {
-  //           matchId,
-  //         },
-  //       })
-  //       .then(function (response) {
-  //         setCopy(response.data)
-  //         setLink(response.data)
-  //         var res = Object.keys(response.data).map(function (key) {
-  //           return response.data[key]
-  //         })
-  //         setStats(res)
-  //       })
-  //       .catch((err) => console.warn(err))
-  //   }, 10000)
+  const appPost = () => {
+    const interval = setInterval(() => {
+      axios
+        .post("https://twism.vercel.app/ids", null, {
+          params: {
+            matchId,
+          },
+        })
+        .then(function (response) {
+          setCopy(response.data)
+          setLink(response.data)
+          var res = Object.keys(response.data).map(function (key) {
+            return response.data[key]
+          })
+          setStats(res)
+        })
+        .catch((err) => console.warn(err))
+    }, 10000)
 
-  //   return () => {
-  //     clearInterval(interval)
-  //   }
-  // }
+    return () => {
+      clearInterval(interval)
+    }
+  }
 
-  // appPost()
+  appPost()
 
-  // useEffect(() => {
-  //   appPost()
-  // }, [isLoading, matchId])
+  useEffect(() => {
+    appPost()
+  }, [isLoading, matchId])
 
   function getStats() {
     axios.get("https://twism.vercel.app/overlay", null)
