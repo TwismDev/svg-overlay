@@ -59,6 +59,45 @@ function App() {
   //     .catch((err) => console.warn(err))
   // }
 
+  // const appPost = () => {
+  //   const interval = setInterval(() => {
+  //     axios
+  //       .post("https://twism.vercel.app/ids", null, {
+  //         params: {
+  //           matchId,
+  //         },
+  //       })
+  //       .then(function (response) {
+  //         setCopy(response.data)
+  //         setLink(response.data)
+  //         var res = Object.keys(response.data).map(function (key) {
+  //           return response.data[key]
+  //         })
+  //         setStats(res)
+  //       })
+  //       .catch((err) => console.warn(err))
+  //   }, 10000)
+
+  //   return () => {
+  //     clearInterval(interval)
+  //   }
+  // }
+
+  // appPost()
+
+  useEffect(() => {
+    appPost()
+  }, [isLoading, matchId])
+
+  function getStats() {
+    axios.get("https://twism.vercel.app/overlay", null)
+      .then(function (response) {
+        setMatchId(response.data[0].matchId)
+      })
+  }
+
+  getStats()
+
   const appPost = () => {
     const interval = setInterval(() => {
       axios
@@ -85,143 +124,6 @@ function App() {
 
   appPost()
 
-  useEffect(() => {
-    appPost()
-  }, [isLoading, matchId])
-
-  function getStats() {
-    axios.get("https://twism.vercel.app/overlay", null)
-      .then(function (response) {
-        console.log(response.data)
-        var tempId = response.data[0].matchId
-        const appPost = () => {
-          const interval = setInterval(() => {
-            axios
-              .post("https://twism.vercel.app/ids", null, {
-                params: {
-                  tempId,
-                },
-              })
-              .then(function (response) {
-                setCopy(response.data)
-                setLink(response.data)
-                var res = Object.keys(response.data).map(function (key) {
-                  return response.data[key]
-                })
-                setStats(res)
-              })
-              .catch((err) => console.warn(err))
-          }, 10000)
-
-          return () => {
-            clearInterval(interval)
-          }
-        }
-
-        appPost()
-      })
-  }
-
-  getStats()
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getStats()
-    }, 10000)
-    return () => {
-      clearInterval(interval)
-    }
-  }, [])
-
-  // const HandleSubmit = (e) => {
-  //   e.preventDefault()
-  //   setIsLoading(true)
-  //   Post()
-  // }
-
-  // useEffect(() => {
-  // 	const interval = setInterval(() => {
-  // 		async function FetchData() {
-  // 			await axios({
-  // 				url: link,
-  // 				method: 'GET',
-  // 				dataType: 'json',
-  // 			}).then((response) => {
-  // 				var res = Object.keys(response.data).map(function (key) {
-  // 					return response.data[key]
-  // 				})
-  // 				setIsLoading(false)
-  // 				setStats(res)
-  // 			})
-  // 		}
-  // 		FetchData()
-  // 	}, 10000)
-  // 	return () => clearInterval(interval)
-  // }, [postDone, link])
-
-  // if (!stats[0])
-  //   return (
-  //     <div className="scoreboard">
-  //       <header className="App-header"></header>
-  //       <div className="box">
-  //         {/* <span className="text-center">login</span> */}
-  //         <form>
-  //           <div className="input-container">
-  //             {selected === "Rmu" ? (
-  //               <input
-  //                 type="text"
-  //                 value={compId}
-  //                 onChange={handleCompIdChange}
-  //                 key="1"
-  //                 onKeyDown={(e) => {
-  //                   if (e.key === "Enter") {
-  //                     HandleSubmit(e);
-  //                   }
-  //                 }}
-  //                 placeholder="ONLY FOR SINGLES KNCOCKOUT (Enter Comp ID)"
-  //               />
-  //             ) : (
-  //               <div></div>
-  //             )}
-  //             <input
-  //               type="text"
-  //               value={matchId}
-  //               key="2"
-  //               onChange={handleMatchIdChange}
-  //               onKeyDown={(e) => {
-  //                 if (e.key === "Enter") {
-  //                   HandleSubmit(e);
-  //                 }
-  //               }}
-  //               placeholder="Enter Match ID. . . "
-  //             />
-  //             <label></label>
-  //           </div>
-  //         </form>
-  //         <RadioCard />
-  //         <button className="btn" onClick={HandleSubmit}>
-  //           submit
-  //           {isLoading === true ? (
-  //             <FontAwesomeIcon
-  //               icon={faSpinner}
-  //               spin
-  //               style={{
-  //                 "--fa-primary-color": "#0d19c5",
-  //                 "--fa-secondary-color": "#0d19c5",
-  //                 "--fa-secondary-opacity": "0.4",
-  //               }}
-  //             />
-  //           ) : (
-  //             <div></div>
-  //           )}
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // else if (
-  //   (!stats[1] && stats[0] && selected === "Single") ||
-  //   selected === "Rmu"
-  // )
 
   // if (stats[0]) {
   return (
