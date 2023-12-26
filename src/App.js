@@ -92,8 +92,32 @@ function App() {
   function getStats() {
     axios.get("https://twism.vercel.app/overlay", null)
       .then(function (response) {
-        // console.log(response.data[0].test)
-        setMatchId(response.data.matchId)
+        var tempId = response.data[0].matchId
+        const appPost = () => {
+          const interval = setInterval(() => {
+            axios
+              .post("https://twism.vercel.app/ids", null, {
+                params: {
+                  tempId,
+                },
+              })
+              .then(function (response) {
+                setCopy(response.data)
+                setLink(response.data)
+                var res = Object.keys(response.data).map(function (key) {
+                  return response.data[key]
+                })
+                setStats(res)
+              })
+              .catch((err) => console.warn(err))
+          }, 10000)
+
+          return () => {
+            clearInterval(interval)
+          }
+        }
+
+        appPost()
       })
   }
 
