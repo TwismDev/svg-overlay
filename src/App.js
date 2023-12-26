@@ -89,13 +89,10 @@ function App() {
     appPost()
   }, [isLoading, matchId])
 
-  function getStats() {
-    axios.get("https://twism.vercel.app/overlay", null)
-      .then(function (response) {
-        setMatchId(response.data[0].matchId)
-      })
+  async function getStats() {
+    const response = await axios.post("https://twism.vercel.app/overlay", null)
+    setMatchId(response.data[0].matchId)
   }
-
   getStats()
 
   const appPost = () => {
