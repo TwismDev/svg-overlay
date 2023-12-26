@@ -92,6 +92,7 @@ function App() {
   function getStats() {
     axios.get("https://twism.vercel.app/overlay", null)
       .then(function (response) {
+        console.log(response.data)
         var tempId = response.data[0].matchId
         const appPost = () => {
           const interval = setInterval(() => {
