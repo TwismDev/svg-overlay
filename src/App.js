@@ -14,8 +14,6 @@ function App() {
   const {
     compId,
     setCompId,
-    stats,
-    setStats,
     isLoading,
     setIsLoading,
     matchId,
@@ -30,6 +28,8 @@ function App() {
     link,
     setLink,
   } = useGlobalContext()
+
+  const [stats, setStats] = useState([])
 
   const handleMatchIdChange = (e) => {
     // console.log(e.target.value);
@@ -208,7 +208,7 @@ function App() {
         </style>
       </Helmet>
       <div className="container-3">
-        <Overlay />
+        <SvgTeam stats={stats} />
       </div>
     </>
   )

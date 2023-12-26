@@ -4,8 +4,7 @@ import ProgressBar from "@ramonak/react-progress-bar"
 import '../home.css'
 import { useGlobalContext } from './Context'
 
-const SvgTeam = () => {
-	const { stats } = useGlobalContext()
+const SvgTeam = ({ stats }) => {
 
 	const [useExt, setUseExt] = useState(false)
 
