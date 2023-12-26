@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { experimental_useEffectEvent as useEffectEvent } from "react"
 import "./home.css"
 import { RadioCard } from "./components/RadioCard"
@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import { Helmet } from "react-helmet"
+import { SvgTeam } from './components/SvgTeam'
 
 function App() {
   const {
