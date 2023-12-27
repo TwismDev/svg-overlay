@@ -10,6 +10,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import { Helmet } from "react-helmet"
 import { SvgTeam } from './components/SvgTeam'
+import { useLocation } from 'react-router-dom'
 
 function App() {
   const {
@@ -17,7 +18,6 @@ function App() {
     setCompId,
     isLoading,
     setIsLoading,
-    matchId,
     copy,
     setCopy,
     setPostDone,
@@ -31,70 +31,9 @@ function App() {
   } = useGlobalContext()
 
   const [stats, setStats] = useState([])
-
-  const handleMatchIdChange = (e) => {
-    // console.log(e.target.value);
-    setMatchId(e.target.value)
-  }
-  const handleCompIdChange = (e) => {
-    // console.log(e.target.value);
-    setCompId(e.target.value)
-  }
-
-  // function Post() {
-  //   axios
-  //     .post("https://twism.vercel.app/ids", null, {
-  //       params: {
-  //         matchId,
-  //       },
-  //     })
-  //     .then(function (response) {
-  //       setCopy(response.data)
-  //       setLink(response.data)
-  //       var res = Object.keys(response.data).map(function (key) {
-  //         return response.data[key]
-  //       })
-  //       setStats(res)
-  //     })
-  //     .catch((err) => console.warn(err))
-  // }
-
-  // const appPost = () => {
-  //   const interval = setInterval(() => {
-  //     axios
-  //       .post("https://twism.vercel.app/ids", null, {
-  //         params: {
-  //           matchId,
-  //         },
-  //       })
-  //       .then(function (response) {
-  //         setCopy(response.data)
-  //         setLink(response.data)
-  //         var res = Object.keys(response.data).map(function (key) {
-  //           return response.data[key]
-  //         })
-  //         setStats(res)
-  //       })
-  //       .catch((err) => console.warn(err))
-  //   }, 10000)
-
-  //   return () => {
-  //     clearInterval(interval)
-  //   }
-  // }
-
-  // appPost()
-
-  useEffect(() => {
-    appPost()
-  }, [isLoading, matchId])
-
-  async function getStats() {
-    const response = await axios.post("https://twism.vercel.app/overlay", null)
-    setMatchId(response.data[0].matchId)
-  }
-  getStats()
-
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const matchId = searchParams.get('matchId')
   const appPost = () => {
     const interval = setInterval(() => {
       axios
@@ -121,8 +60,6 @@ function App() {
 
   appPost()
 
-
-  // if (stats[0]) {
   return (
     <>
       <Helmet>
