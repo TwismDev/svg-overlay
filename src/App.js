@@ -14,7 +14,6 @@ import { useLocation } from 'react-router-dom'
 
 function App() {
   const {
-    compId,
     setCompId,
     isLoading,
     setIsLoading,
@@ -34,12 +33,14 @@ function App() {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const matchId = searchParams.get('matchId')
+  const compId = searchParams.get('compId')
   const appPost = () => {
     const interval = setInterval(() => {
       axios
         .post("https://twism.vercel.app/ids", null, {
           params: {
             matchId,
+            compId
           },
         })
         .then(function (response) {
