@@ -11,6 +11,7 @@ import axios from "axios"
 import { Helmet } from "react-helmet"
 import { SvgTeam } from './components/SvgTeam'
 import { useLocation } from 'react-router-dom'
+import * as temp from './stats.json'
 
 function App() {
   const {
@@ -32,8 +33,11 @@ function App() {
   const [stats, setStats] = useState([])
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-  const matchId = searchParams.get('matchId')
-  const compId = searchParams.get('compId')
+  // const matchId = searchParams.get('matchId')
+  // const compId = searchParams.get('compId')
+  const compId = 4619
+  const matchId = 645759
+
   const appPost = () => {
     const interval = setInterval(() => {
       axios
@@ -50,7 +54,7 @@ function App() {
             return response.data[key]
           })
           setStats(res)
-          console.log(res)
+
         })
         .catch((err) => console.warn(err))
     }, 10000)
