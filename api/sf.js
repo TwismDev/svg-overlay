@@ -1,4 +1,4 @@
-import { useGlobalContext } from '../src/components/Context'
+const { useGlobalContext } = require('../src/components/Context')
 
 export default async (req, res) => {
     const { id } = req.query
