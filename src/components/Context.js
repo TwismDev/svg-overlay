@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import * as Ably from 'ably'
-import { AblyProvider, useChannel, usePresence } from 'ably/react'
+import { useSearchParams } from "react-router-dom"
 
 const AppContext = React.createContext()
 
@@ -24,9 +24,11 @@ const AppProvider = ({ children }) => {
 	const [message, setMessage] = useState()
 	const [copy, setCopy] = useState('')
 	const [stats, setStats] = useState([])
+	const searchParams = useSearchParams()
+	const id = searchParams.get('id')
 
 	const client = new Ably.Realtime('9zzpLg.YrD7jw:RCOMB9Lq4mkx0-5Zn99PFY4iKEA1WtvpBWG-5fRkv0M')
-	const channel = client.channels.get('ids')
+	const channel = client.channels.get(id)
 
 	useEffect(() => {
 		function subscribe() {
