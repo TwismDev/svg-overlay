@@ -27,7 +27,7 @@ const AppProvider = ({ children }) => {
 	const searchParams = useSearchParams()
 	const id = searchParams.get('id')
 
-	const client = new Ably.Realtime('9zzpLg.YrD7jw:RCOMB9Lq4mkx0-5Zn99PFY4iKEA1WtvpBWG-5fRkv0M')
+	const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
 	const channel = client.channels.get(id)
 
 	useEffect(() => {
