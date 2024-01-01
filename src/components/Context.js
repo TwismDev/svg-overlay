@@ -101,6 +101,6 @@ const useGlobalContext = () => {
 export { AppProvider, useGlobalContext }
 export function handleId(id) {
 	// Process the id as needed
-	se
+	setId(id)
 	// Perform other actions with the id
 }
