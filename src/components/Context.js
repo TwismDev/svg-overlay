@@ -85,6 +85,8 @@ const AppProvider = ({ children }) => {
 				setLink,
 				compId,
 				setCompId,
+				id,
+				setId
 			}}>
 
 			{children}
@@ -99,8 +101,4 @@ const useGlobalContext = () => {
 }
 
 export { AppProvider, useGlobalContext }
-export function handleId(id) {
-	// Process the id as needed
-	setId(id)
-	// Perform other actions with the id
-}
+
