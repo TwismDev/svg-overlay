@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 const AppContext = React.createContext()
 
-const AppProvider = ({ children, id }) => {
+const AppProvider = ({ children }) => {
 	const [time, setTime] = useState(null)
 	const [p1Name, setp1Name] = useState(null)
 	const [p2Name, setp2Name] = useState(null)
