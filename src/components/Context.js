@@ -46,6 +46,10 @@ const AppProvider = ({ children }) => {
 		}
 	}, [])
 
+	useEffect(() => {
+		console.log(matchId, compId)
+	}, [matchId, compId])
+
 	return (
 		<AppContext.Provider
 			value={{
