@@ -1,9 +1,8 @@
 import { useGlobalContext } from '../src/components/Context'
 
-const { setId } = useGlobalContext()
-
 export default async (req, res) => {
     const { id } = req.query
+    const { setId } = useGlobalContext()
     setId(id)
-    res.status.send(resonse.text)
+    res.status.send('ID set successfully')
 }
