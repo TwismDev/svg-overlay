@@ -24,30 +24,30 @@ const AppProvider = ({ children }) => {
 	const [message, setMessage] = useState()
 	const [copy, setCopy] = useState('')
 	const [stats, setStats] = useState([])
-	const searchParams = new URLSearchParams(useLocation().search)
-	const id = searchParams.get('id')
-	console.log(id)
+	const [id, setId] = useState(null)
 
-	const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
-	const channel = client.channels.get(id)
+	if (id) {
+		const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
+		const channel = client.channels.get(id)
 
-	useEffect(() => {
-		function subscribe() {
-			channel.subscribe(message => {
-				if (message.data.matchId) {
-					setMatchId(message.data.matchId)
-				}
-				if (message.data.compId) {
-					setCompId(message.data.compId)
-				}
-			})
-		}
-		subscribe()
+		useEffect(() => {
+			function subscribe() {
+				channel.subscribe(message => {
+					if (message.data.matchId) {
+						setMatchId(message.data.matchId)
+					}
+					if (message.data.compId) {
+						setCompId(message.data.compId)
+					}
+				})
+			}
+			subscribe()
 
-		return function cleanup() {
-			channel.unsubscribe()
-		}
-	})
+			return function cleanup() {
+				channel.unsubscribe()
+			}
+		})
+	}
 
 	return (
 		<AppContext.Provider
@@ -100,3 +100,8 @@ const useGlobalContext = () => {
 }
 
 export { AppProvider, useGlobalContext }
+export function handleId(id) {
+	// Process the id as needed
+	se
+	// Perform other actions with the id
+}
