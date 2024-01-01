@@ -33,10 +33,13 @@ function App() {
   const [stats, setStats] = useState([])
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-  // const matchId = searchParams.get('matchId')
-  // const compId = searchParams.get('compId')
-  const compId = 4619
-  const matchId = 645759
+  const matchId = searchParams.get('matchId')
+  const compId = searchParams.get('compId')
+
+  useEffect(() => {
+    console.log(matchId)
+    console.log(compId)
+  }, [matchId, compId])
 
   const appPost = () => {
     const interval = setInterval(() => {
