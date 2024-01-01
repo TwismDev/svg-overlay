@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom"
 
 const AppContext = React.createContext()
 
-const AppProvider = ({ children }) => {
+const AppProvider = ({ children, id }) => {
 	const [time, setTime] = useState(null)
 	const [p1Name, setp1Name] = useState(null)
 	const [p2Name, setp2Name] = useState(null)
@@ -24,8 +24,7 @@ const AppProvider = ({ children }) => {
 	const [message, setMessage] = useState()
 	const [copy, setCopy] = useState('')
 	const [stats, setStats] = useState([])
-	const searchParams = useSearchParams()
-	const id = searchParams.get('id')
+
 
 	const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
 	const channel = client.channels.get(id)
