@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
 import * as Ably from 'ably'
-import { useLocation } from 'react-router-dom'
 
 const AppContext = React.createContext()
 
@@ -25,6 +24,10 @@ const AppProvider = ({ children }) => {
 	const [copy, setCopy] = useState('')
 	const [stats, setStats] = useState([])
 	const [id, setId] = useState(null)
+
+	useEffect(() => {
+		console.log(id)
+	}, [id])
 
 	useEffect(() => {
 		if (id) {
