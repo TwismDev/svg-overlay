@@ -11,12 +11,11 @@ import { AppProvider } from './components/Context'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
-const searchParams = new URLSearchParams(useLocation().search)
-const id = searchParams.get('id')
-
 library.add(faCircleCheck, faSpinner)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+const searchParams = new URLSearchParams(useLocation().search)
+const id = searchParams.get('id')
 root.render(
   <Router>
     <React.StrictMode>
