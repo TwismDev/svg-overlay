@@ -25,31 +25,26 @@ const AppProvider = ({ children }) => {
 	const [stats, setStats] = useState([])
 	const [id, setId] = useState(null)
 
-	useEffect(() => {
-		console.log(id)
-	}, [id])
 
 	useEffect(() => {
-		if (id) {
-			const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
-			const channel = client.channels.get(id)
-			function subscribe() {
-				channel.subscribe(message => {
-					if (message.data.matchId) {
-						setMatchId(message.data.matchId)
-					}
-					if (message.data.compId) {
-						setCompId(message.data.compId)
-					}
-				})
-			}
-			subscribe()
-
-			return function cleanup() {
-				channel.unsubscribe()
-			}
+		const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
+		const channel = client.channels.get('ids')
+		function subscribe() {
+			channel.subscribe(message => {
+				if (message.data.matchId) {
+					setMatchId(message.data.matchId)
+				}
+				if (message.data.compId) {
+					setCompId(message.data.compId)
+				}
+			})
 		}
-	})
+		subscribe()
+
+		return function cleanup() {
+			channel.unsubscribe()
+		}
+	}, [])
 
 	return (
 		<AppContext.Provider
