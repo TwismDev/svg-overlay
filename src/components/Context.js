@@ -26,6 +26,7 @@ const AppProvider = ({ children }) => {
 	const [stats, setStats] = useState([])
 	const searchParams = new URLSearchParams(useLocation().search)
 	const id = searchParams.get('id')
+	console.log(id)
 
 	const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
 	const channel = client.channels.get(id)
