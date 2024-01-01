@@ -12,36 +12,28 @@ import { Helmet } from "react-helmet"
 import { SvgTeam } from './components/SvgTeam'
 import { useLocation } from 'react-router-dom'
 import * as temp from './stats.json'
+import Ably from "ably/promises"
 
 function App() {
   const {
-    setCompId,
     isLoading,
     setIsLoading,
     copy,
     setCopy,
     setPostDone,
     postDone,
-    setMatchId,
     url,
     setUrl,
     selected,
     link,
     setLink,
+    matchId,
+    compId,
   } = useGlobalContext()
 
   const [stats, setStats] = useState([])
-  const location = useLocation()
-  const searchParams = new URLSearchParams(location.search)
-  const matchId = searchParams.get('matchId')
-  const compId = searchParams.get('compId')
 
   useEffect(() => {
-    console.log(matchId)
-    console.log(compId)
-  }, [matchId, compId])
-
-  const appPost = () => {
     const interval = setInterval(() => {
       axios
         .post("https://twism.vercel.app/ids", null, {
@@ -51,23 +43,16 @@ function App() {
           },
         })
         .then(function (response) {
-          setCopy(response.data)
-          setLink(response.data)
-          var res = Object.keys(response.data).map(function (key) {
-            return response.data[key]
-          })
+          const res = Object.keys(response.data).map(key => response.data[key])
           setStats(res)
-
         })
-        .catch((err) => console.warn(err))
+        .catch(err => console.warn(err))
     }, 10000)
 
     return () => {
       clearInterval(interval)
     }
-  }
-
-  appPost()
+  }, [matchId, compId]) // Add any dependencies that should trigger the effect
 
   return (
     <>
