@@ -24,6 +24,7 @@ const AppProvider = ({ children }) => {
 	const [copy, setCopy] = useState('')
 	const [stats, setStats] = useState([])
 	const [id, setId] = useState(null)
+	const [isLandscape, setIsLandscape] = useState(false)
 
 
 	useEffect(() => {
@@ -36,6 +37,9 @@ const AppProvider = ({ children }) => {
 				}
 				if (message.data.compId) {
 					setCompId(message.data.compId)
+				}
+				if (message.data.landscape) {
+					setIsLandscape(true)
 				}
 			})
 		}
@@ -84,7 +88,9 @@ const AppProvider = ({ children }) => {
 				compId,
 				setCompId,
 				id,
-				setId
+				setId,
+				isLandscape,
+				setIsLandscape
 			}}>
 
 			{children}

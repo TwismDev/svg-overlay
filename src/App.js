@@ -13,6 +13,7 @@ import { SvgTeam } from './components/SvgTeam'
 import { useLocation } from 'react-router-dom'
 import * as temp from './stats.json'
 import Ably from "ably/promises"
+import { SvgRmu } from './components/SvgRmu'
 
 function App() {
   const {
@@ -29,6 +30,7 @@ function App() {
     setLink,
     matchId,
     compId,
+    isLandscape
   } = useGlobalContext()
 
   const [stats, setStats] = useState([])
@@ -54,20 +56,37 @@ function App() {
     }
   }, [matchId, compId]) // Add any dependencies that should trigger the effect
 
-  return (
-    <>
-      <Helmet>
-        <style>
-          {
-            "body { background-image: none; background-color: transparent !important; }"
-          }
-        </style>
-      </Helmet>
-      <div className="container-3">
-        <SvgTeam stats={stats} />
-      </div>
-    </>
-  )
+  if (!isLandscape) {
+    return (
+      <>
+        <Helmet>
+          <style>
+            {
+              "body { background-image: none; background-color: transparent !important; }"
+            }
+          </style>
+        </Helmet>
+        <div className="container-3">
+          <SvgTeam stats={stats} />
+        </div>
+      </>
+    )
+  } else if (isLandscape) {
+    return (
+      <>
+        <Helmet>
+          <style>
+            {
+              "body { background-image: none; background-color: transparent !important; }"
+            }
+          </style>
+        </Helmet>
+        <div className="new-container">
+          <SvgRmu stats={stats} />
+        </div>
+      </>
+    )
+  }
   // }
   // else if (stats[1] && selected === "Multi")
   //   return (
