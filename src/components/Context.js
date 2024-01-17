@@ -38,7 +38,7 @@ const AppProvider = ({ children }) => {
 				if (message.data.compId) {
 					setCompId(message.data.compId)
 				}
-				if (message.data.landscape) {
+				if (message.data.landscape && message.data.landscape == true) {
 					setIsLandscape(true)
 				}
 			})

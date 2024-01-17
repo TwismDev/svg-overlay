@@ -56,7 +56,7 @@ function App() {
     }
   }, [matchId, compId]) // Add any dependencies that should trigger the effect
 
-  if (!isLandscape) {
+  // if (!isLandscape) {
     return (
       <>
         <Helmet>
@@ -71,22 +71,22 @@ function App() {
         </div>
       </>
     )
-  } else if (isLandscape) {
-    return (
-      <>
-        <Helmet>
-          <style>
-            {
-              "body { background-image: none; background-color: transparent !important; }"
-            }
-          </style>
-        </Helmet>
-        <div className="new-container">
-          <SvgRmu stats={stats} />
-        </div>
-      </>
-    )
-  }
+  // } else if (isLandscape) {
+  //   return (
+  //     <>
+  //       <Helmet>
+  //         <style>
+  //           {
+  //             "body { background-image: none; background-color: transparent !important; }"
+  //           }
+  //         </style>
+  //       </Helmet>
+  //       <div className="new-container">
+  //         <SvgRmu stats={stats} />
+  //       </div>
+  //     </>
+  //   )
+  // }
   // }
   // else if (stats[1] && selected === "Multi")
   //   return (
