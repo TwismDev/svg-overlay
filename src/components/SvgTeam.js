@@ -24,7 +24,7 @@ const SvgTeam = ({ stats }) => {
 				data-name='Layer 1'
 				width='80%'
 				viewBox='0 0 1629.26 117'
-				style={{ transform: 'scale(1.2)' }}
+				style={{ transform: 'scale(1.4)' }}
 			>
 				<defs>
 					<linearGradient
