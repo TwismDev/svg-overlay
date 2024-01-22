@@ -20,147 +20,148 @@ const SvgTeam = ({ stats }) => {
 			</div>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
+				xmlnsXlink='http://www.w3.org/1999/xlink'
 				data-name='Layer 1'
-				viewBox='0 0 1629.29 183.2'
+				width={'90%'}
+				viewBox='0 0 1604.39 179.64'
+				style={{ transform: 'scaleY(0.8)' }}
 			>
 				<defs>
 					<linearGradient
 						id='a'
-						x1={738.52}
-						x2={890.7}
-						y1={3034.23}
-						y2={3043.53}
-						gradientTransform='translate(0 -2984)'
+						x1={1.73}
+						x2={568.2}
+						y1={119.87}
+						y2={154.48}
 						gradientUnits='userSpaceOnUse'
 					>
-						<stop
-							offset={0}
-							stopColor='#f7f5f5'
-						/>
-						<stop
-							offset={0.54}
-							stopColor='#d9d8d8'
-						/>
+						<stop offset={0} />
+						<stop offset={0.54} />
 					</linearGradient>
 					<linearGradient
+						xlinkHref='#a'
 						id='b'
-						x1={933.97}
-						x2={1024.26}
-						y1={3036.13}
-						y2={3041.65}
-						gradientTransform='translate(0 -2984)'
+						x1={1032.91}
+						x2={1599.38}
+						y1={119.01}
+						y2={153.63}
+					/>
+					<linearGradient
+						xlinkHref='#a'
+						id='c'
+						x1={727.55}
+						x2={879.73}
+						y1={-3534.49}
+						y2={-3543.79}
+						gradientTransform='matrix(1 0 0 -1 0 -3496.41)'
+					/>
+					<linearGradient
+						id='d'
+						x1={923}
+						x2={1013.29}
+						y1={-3536.39}
+						y2={-3541.91}
+						gradientTransform='matrix(1 0 0 -1 0 -3496.41)'
 						gradientUnits='userSpaceOnUse'
 					>
-						<stop
-							offset={0}
-							stopColor='#f7f5f5'
-						/>
-						<stop
-							offset={0.54}
-							stopColor='#d9d8d8'
-						/>
+						<stop offset={0} />
+						<stop offset={0.54} />
 					</linearGradient>
 					<linearGradient
-						id='c'
-						x1={604.66}
-						x2={694.96}
-						y1={3036.13}
-						y2={3041.65}
-						gradientTransform='translate(0 -2984)'
+						id='e'
+						x1={593.69}
+						x2={683.99}
+						y1={-3536.39}
+						y2={-3541.91}
+						gradientTransform='matrix(1 0 0 -1 0 -3496.41)'
 						gradientUnits='userSpaceOnUse'
 					>
-						<stop
-							offset={0}
-							stopColor='#f7f5f5'
-						/>
-						<stop
-							offset={0.54}
-							stopColor='#d9d8d8'
-						/>
+						<stop offset={0} />
+						<stop offset={0.54} />
 					</linearGradient>
 				</defs>
-				<g data-name='Group 1'>
-					<path d='M18.67 23.1c2.7-6.9 7.7-11 13.1-11h1582.5c11.7 0 18.9 18.3 12.8 32.6l-18.3 42.9c-2.7 6.4-7.6 10.3-12.8 10.3H15.07c-11.5 0-18.7-17.6-13.1-31.9l16.7-42.9Z' />
-					<path
-						fill='#1c1c1c'
-						d='M19.57 25.5c2.7-6.6 7.7-10.6 13-10.6h674.4v80H17.17c-11.6 0-18.8-18-12.9-32.3l15.3-37.1Z'
-					/>
-					<path
-						fill='#1c1c1c'
-						d='M706.97 14.9h904.9c11.8 0 19 18.6 12.7 32.9l-16.2 37.2c-2.7 6.3-7.6 10-12.7 10h-888.7V14.9Z'
-					/>
-					<path
-						fill='url(#a)'
-						d='M741.77 19.2h146.4c6.5 0 11.8 9.6 11.8 21.4v28.6c0 11.9-5.3 21.4-11.8 21.4h-146.4c-6.5 0-11.8-9.6-11.8-21.4V40.6c0-11.8 5.3-21.4 11.8-21.4Z'
-					/>
-					<path
-						fill='url(#b)'
-						d='M936.27 19.2h86.1c3.8 0 6.9 9.6 6.9 21.4v28.6c0 11.9-3.1 21.4-6.9 21.4h-86.1c-3.8 0-6.9-9.6-6.9-21.4V40.6c0-11.8 3.1-21.4 6.9-21.4Z'
-						data-name='Center'
-					/>
-					<path
-						fill='url(#c)'
-						d='M606.97 19.2h86.1c3.8 0 6.9 9.6 6.9 21.4v28.6c0 11.9-3.1 21.4-6.9 21.4h-86.1c-3.8 0-6.9-9.6-6.9-21.4V40.6c-.1-11.8 3.1-21.4 6.9-21.4Z'
-						data-name='Center'
-					/>
-					<path
-						fill='#fff'
-						d='M1257.07 110.2h218v73h-218z'
-					/>
-					<path
-						fill='#fff'
-						d='M1259.07 113.4h214v66.7h-214z'
-					/>
-					<path
-						fill='#c45353'
-						d='M1197.07 134c0-13.2 6.7-23.8 15-23.8h45v73h-45c-8.3 0-15-10.6-15-23.8V134Z'
-					/>
-					<path
-						fill='#1c1c1c'
-						d='M1475.07 110.2h113.8c14.5 0 26.2 10.6 26.2 23.8v25.4c0 13.2-11.7 23.8-26.2 23.8h-113.8v-73Z'
-					/>
-					<path
-						fill='rgba(217, 217, 217, .08)'
-						d='M1197.07 143.5c0-18.4 11-33.3 24.5-33.3h376c9.7 0 17.5 10.6 17.5 23.8v9.5h-418Z'
-					/>
-					<g fill='#fff'>
-						<path d='M1201.87 159.6v-27.2h13.6v5.9h-8.5v4.6h7.8v5.9h-7.8v4.6h8.5v5.9h-13.6v.3ZM1223.57 132.4l3.1 7.9h.1l3.1-7.9h5.7l-5.7 13.6 5.9 13.6h-5.9l-3.2-8h-.1l-3.2 8h-5.8l5.8-13.6-5.6-13.6h5.8ZM1237.37 138.4v-6h16.4v5.9h-5.7v21.3h-5v-21.2h-5.7Z' />
-					</g>
-					<text
-						fill='#fff'
-						data-name='timer'
-						style={{
-							isolation: 'isolate',
-							fontSize: 58,
-							fill: '#fff',
-							fontFamily: 'xxBold',
-							fontVariant: 'small-caps',
-							fontWeight: '900',
-							textAlign: 'center',
-							textAnchor: 'middle',
-						}}
-						transform='matrix(.7 0 0 1 1543.06 167.28)'
-					>
-						<tspan
-							x={0}
-							y={0}
-						>
-							{'00:00'}
-						</tspan>
-					</text>
-					<path
-						fill='none'
-						d='M1480.07 116.7h98v60h-98z'
-						data-name='timer'
-					/>
-				</g>
 				<path
-					fill='none'
-					d='M81.57 22.8h500.8v64.5H81.57zM1046.97 22.8h500.8v64.5h-500.8zM599.57 22.8h100.9v64.5h-100.9zM928.87 22.8h100.9v64.5h-100.9zM725.37 22.8h175.6v64.5h-175.6z'
+					fill='url(#a)'
+					d='M530.77 179.64H30.61c-21.96 0-36.76-22.47-28.1-42.65l8.6-20.01a32.488 32.488 0 0 1 29.68-19.66l500.73-2.47c20.28-.1 34.12 20.49 26.36 39.23l-11.87 28.69a27.323 27.323 0 0 1-25.24 16.87Z'
+				/>
+				<path
+					fill='#1b1b1b'
+					d='M529.68 174.14H28.93c-18.04 0-30.17-18.5-22.96-35.05l9.16-21.03a25.914 25.914 0 0 1 23.63-15.56l501-2.2c17.97-.08 30.16 18.23 23.18 34.78l-9.96 23.6a25.304 25.304 0 0 1-23.3 15.46Z'
+				/>
+				<path
+					fill='url(#b)'
+					d='M1561.95 178.78H1061.8c-21.96 0-36.76-22.47-28.1-42.65l8.6-20.01a32.488 32.488 0 0 1 29.68-19.66l500.73-2.47c20.28-.1 34.12 20.49 26.36 39.23l-11.87 28.69a27.323 27.323 0 0 1-25.24 16.87Z'
+				/>
+				<path
+					fill='#1b1b1b'
+					d='M1560.85 173.28H1060.1c-18.04 0-30.17-18.5-22.96-35.05l9.16-21.03a25.914 25.914 0 0 1 23.63-15.56l501-2.2c17.97-.08 30.16 18.23 23.18 34.78l-9.96 23.6a25.304 25.304 0 0 1-23.3 15.46Z'
+				/>
+				<path d='M25.73 85.8h1539.01c10.15 0 19.29-6.13 23.14-15.52l14.62-35.65c6.77-16.52-5.37-34.62-23.22-34.62H39.54c-10.27 0-19.52 6.21-23.41 15.71L1.94 50.36C-4.98 67.27 7.45 85.8 25.72 85.8Z' />
+				<path
+					fill='#1c1c1c'
+					d='M29.85 81.25h1531.91c10.1 0 19.2-5.5 23.03-13.93l14.55-32c6.74-14.82-5.35-31.07-23.12-31.07H43.6c-10.22 0-19.43 5.57-23.3 14.1L6.18 49.45c-6.89 15.17 5.49 31.8 23.67 31.8Z'
+				/>
+				<path
+					fill='#fff'
+					d='M730.8 7.05h146.4c6.5 0 11.8 9.6 11.8 21.4v28.6c0 11.9-5.3 21.4-11.8 21.4H730.8c-6.5 0-11.8-9.6-11.8-21.4v-28.6c0-11.8 5.3-21.4 11.8-21.4Z'
+				/>
+				<path
+					fill='#fff'
+					d='M925.3 7.05h86.1c3.8 0 6.9 9.6 6.9 21.4v28.6c0 11.9-3.1 21.4-6.9 21.4h-86.1c-3.8 0-6.9-9.6-6.9-21.4v-28.6c0-11.8 3.1-21.4 6.9-21.4Z'
+				/>
+				<path
+					fill='#fff'
+					d='M596 7.05h86.1c3.8 0 6.9 9.6 6.9 21.4v28.6c0 11.9-3.1 21.4-6.9 21.4H596c-3.8 0-6.9-9.6-6.9-21.4v-28.6c-.1-11.8 3.1-21.4 6.9-21.4Z'
+				/>
+				{/* <path
+					fill='#fff'
+					d='M653.74 94.85h218v84.79h-218V94.85Z'
+				/>
+				<path
+					fill='#fff'
+					d='M655.74 98.57h214v77.47h-214V98.57Z'
+				/>
+				<path
+					fill='#c45353'
+					d='M593.74 125.84c0-15.33 16.2-30.99 24.5-30.99h35.5v84.79h-34.21c-8.3 0-25.79-12.31-25.79-27.64v-26.16Z'
+				/>
+				<path
+					fill='#1c1c1c'
+					d='M871.74 94.85h113.8c14.5 0 26.2 12.31 26.2 27.64v29.5c0 15.33-11.7 27.64-26.2 27.64h-113.8V94.84Z'
+				/>
+				<path
+					fill='rgba(217, 217, 217, .08)'
+					d='M593.91 129.45c0-21.37 13.18-34.6 26.68-34.6h364.95c19.05 0 26.2 12.31 26.2 27.64v8.09l-417.83-1.14Z'
+				/>
+				<path
+					fill='#fff'
+					d='M598.54 152.23v-31.59h13.6v6.85h-8.5v5.34h7.8v6.85h-7.8v5.34h8.5v6.85h-13.6v.35Zm21.7-31.59 3.1 9.18h.1l3.1-9.18h5.7l-5.7 15.8 5.9 15.8h-5.9l-3.2-9.29h-.1l-3.2 9.29h-5.8l5.8-15.8-5.6-15.8h5.8Zm13.8 6.96v-6.97h16.4v6.85h-5.7v24.74h-5V127.6h-5.7Z'
 				/>
 				<text
-					fill='#fff'
-					data-name='homename'
+					style={{
+						isolation: 'isolate',
+						fontSize: 58,
+						fill: '#fff',
+						fontFamily: 'xxBold',
+						fontVariant: 'small-caps',
+						fontWeight: '900',
+						textAlign: 'center',
+						textAnchor: 'middle',
+					}}
+					transform='matrix(.6 0 0 1 939.73 161.15)'
+				>
+					<tspan
+						x={0}
+						y={0}
+					>
+						{'00:00'}
+					</tspan>
+				</text> */}
+				<path
+					fill='none'
+					d='M876.74 102.4h98v69.69h-98V102.4ZM70.6 10.65h500.8v64.5H70.6v-64.5Zm965.4 0h500.8v64.5H1036v-64.5Zm-447.4 0h100.9v64.5H588.6v-64.5Zm329.3 0h100.9v64.5H917.9v-64.5Zm-203.5 0H890v64.5H714.4v-64.5Z'
+				/>
+				<text
 					style={{
 						isolation: 'isolate',
 						fontSize: 62,
@@ -171,7 +172,7 @@ const SvgTeam = ({ stats }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
-					transform='matrix(.7 0 0 1 299.52 74.55)'
+					transform='matrix(.7 0 0 1 288.55 62.4)'
 				>
 					<tspan
 						x={0}
@@ -181,8 +182,6 @@ const SvgTeam = ({ stats }) => {
 					</tspan>
 				</text>
 				<text
-					fill='#fff'
-					data-name='awayname'
 					style={{
 						isolation: 'isolate',
 						fontSize: 66,
@@ -193,7 +192,7 @@ const SvgTeam = ({ stats }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
-					transform='matrix(.7 0 0 1 1329.9 74.55)'
+					transform='matrix(.7 0 0 1 1318.93 62.4)'
 				>
 					<tspan
 						x={0}
@@ -203,8 +202,6 @@ const SvgTeam = ({ stats }) => {
 					</tspan>
 				</text>
 				<text
-					fill='#231f20'
-					data-name='awayscore'
 					style={{
 						isolation: 'isolate',
 						fontSize: 66,
@@ -215,7 +212,7 @@ const SvgTeam = ({ stats }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
-					transform='matrix(.7 0 0 1 977.82 78.55)'
+					transform='matrix(.7 0 0 1 966.85 66.4)'
 				>
 					<tspan
 						x={0}
@@ -225,8 +222,6 @@ const SvgTeam = ({ stats }) => {
 					</tspan>
 				</text>
 				<text
-					fill='#231f20'
-					data-name='homescore'
 					style={{
 						isolation: 'isolate',
 						fontSize: 66,
@@ -237,7 +232,7 @@ const SvgTeam = ({ stats }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
-					transform='matrix(.7 0 0 1 647.05 78.55)'
+					transform='matrix(.7 0 0 1 636.08 66.4)'
 				>
 					<tspan
 						x={0}
@@ -246,63 +241,47 @@ const SvgTeam = ({ stats }) => {
 						{stats[0] ? stats[0].homescore : ''}
 					</tspan>
 				</text>
-				<text
+				<g
 					fill='#231f20'
-					data-name='raceto'
-					style={{
-						isolation: 'isolate',
-						fontSize: 56,
-						fill: '#231f20',
-						fontFamily: 'xxBold',
-						fontVariant: 'small-caps',
-						fontWeight: '900',
-						textAlign: 'center',
-						verticalAlign: 'middle',
-						textAnchor: 'middle',
-					}}
-					transform='matrix(.7 0 0 1 813.48 69.55)'
+					fontFamily='ArialMT, Arial'
+					fontSize={12}
 				>
-					<tspan
-						x={-70}
-						y={1.5}
+					<text
+						style={{
+							isolation: 'isolate',
+							fontSize: 56,
+							fill: '#231f20',
+							fontFamily: 'xxBold',
+							fontVariant: 'small-caps',
+							fontWeight: '900',
+							textAlign: 'center',
+							verticalAlign: 'middle',
+							textAnchor: 'middle',
+						}}
+						data-name='raceto'
+						transform='matrix(.7 0 0 1 803.48 58.55)'
 					>
-						{'('}
-					</tspan>
-					<tspan
-						x={0}
-						y={6}
-					>
-						{'11'}
-					</tspan>
-					<tspan
-						x={71}
-						y={1.5}
-					>
-						{')'}
-					</tspan>
-				</text>
-				<path
-					d='M13.67 119.6c2-5.8 5.6-9.4 9.6-9.4h1153.9c8.5 0 13.8 15.6 9.3 27.7l-13.3 36.5c-2 5.5-5.5 8.8-9.3 8.8H10.97c-8.4 0-13.6-15-9.6-27.1l12.3-36.5Z'
-					data-name='Frame'
-				/>
-				<path
-					fill='#1c1c1c'
-					d='M13.67 121.7c2-5.6 5.6-9 9.5-9h491.4v67.9H11.87c-8.5 0-13.7-15.3-9.4-27.4l11.2-31.5Z'
-					data-name='HomeFrame'
-				/>
-				<path
-					fill='#1c1c1c'
-					d='M514.57 112.8h659.4c8.6 0 13.8 15.8 9.3 27.9l-11.8 31.5c-2 5.3-5.5 8.5-9.3 8.5h-647.6v-67.9Z'
-					data-name='AwayFrame'
-				/>
-				<path
-					fill='none'
-					d='M74.07 114.5h500.8V179H74.07zM625.17 114.5h500.8V179h-500.8z'
-					data-name='homeplayer'
-				/>
+						<tspan
+							x='-70'
+							y='1.5'
+						>
+							{'('}
+						</tspan>
+						<tspan
+							x='0'
+							y='6'
+						>
+							{''}
+						</tspan>
+						<tspan
+							x='71'
+							y='1.5'
+						>
+							{')'}
+						</tspan>
+					</text>
+				</g>
 				<text
-					fill='#fff'
-					data-name='TimeZone'
 					style={{
 						isolation: 'isolate',
 						fontSize: 58,
@@ -313,7 +292,7 @@ const SvgTeam = ({ stats }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
-					transform='matrix(.7 0 0 1 900.94 167.04)'
+					transform='matrix(.7 0 0 1 275.78 153.91)'
 				>
 					<tspan
 						x={0}
@@ -323,8 +302,6 @@ const SvgTeam = ({ stats }) => {
 					</tspan>
 				</text>
 				<text
-					fill='#fff'
-					data-name='Tournament Name'
 					style={{
 						isolation: 'isolate',
 						fontSize: 58,
@@ -335,7 +312,7 @@ const SvgTeam = ({ stats }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
-					transform='matrix(.7 0 0 1 280.51 167.51)'
+					transform='matrix(.7 0 0 1 1325.16 156.43)'
 				>
 					<tspan
 						x={0}
