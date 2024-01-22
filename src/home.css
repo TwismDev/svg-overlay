@@ -232,15 +232,10 @@ div.matchIdInput {
 	width: 100%;
 }
 .container-3 {
-	text-align: center;
-	grid-column: 2 / 2;
-	grid-row: 1 / 1;
-	justify-self: center;
+	display: flex;
+	justify-content: center;
 	align-items: center;
-	margin-top: 530px;
-	transform: scaleY(1.2);
-	margin-bottom: 80px;
-	text-shadow: 0.2px 0.2px 0.2px #000;
+	height: 100vh; /* Set the height of the container to the full viewport height */
 }
 .container-1 {
 	text-align: center;

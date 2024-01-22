@@ -22,7 +22,6 @@ const SvgTeam = ({ stats }) => {
 				xmlns='http://www.w3.org/2000/svg'
 				xmlnsXlink='http://www.w3.org/1999/xlink'
 				data-name='Layer 1'
-				width={'90%'}
 				viewBox='0 0 1604.39 179.64'
 				style={{ transform: 'scaleY(0.8)', transform: 'scale(5)' }}
 			>
