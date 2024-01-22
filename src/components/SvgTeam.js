@@ -22,10 +22,9 @@ const SvgTeam = ({ stats }) => {
 				xmlns='http://www.w3.org/2000/svg'
 				xmlnsXlink='http://www.w3.org/1999/xlink'
 				data-name='Layer 1'
-				// viewBox='0 0 1604.39 179.64'
-				width='100%'
-				height='100%'
-				style={{ transform: 'scaleY(0.8)', transform: 'scale(5)' }}
+				viewBox='0 0 1604.39 179.64'
+				style={{ transform: 'scaleY(0.9)'}}
+				width='90%'
 			>
 				<defs>
 					<linearGradient
