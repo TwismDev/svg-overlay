@@ -38,9 +38,6 @@ function App() {
 	const matchId = new URLSearchParams(location.search).get('matchId')
 	const test = new URLSearchParams(location.search).get('test')
 
-	const liveURL = 'https://twism.vercel.app/ids'
-	const testURL = 'https://twism.vercel.app/playsite'
-
 	useEffect(() => {
 		if (test === 1 || test === '1') {
 			setPlaySite(true)
