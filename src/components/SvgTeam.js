@@ -23,7 +23,7 @@ const SvgTeam = ({ stats }) => {
 				xmlnsXlink='http://www.w3.org/1999/xlink'
 				data-name='Layer 1'
 				viewBox='0 0 1604.39 179.64'
-				style={{ transform: 'scaleY(0.9)'}}
+				style={{ transform: 'scaleY(0.9)' }}
 				width='90%'
 			>
 				<defs>
@@ -261,24 +261,7 @@ const SvgTeam = ({ stats }) => {
 						data-name='raceto'
 						transform='matrix(.7 0 0 1 803.48 58.55)'
 					>
-						<tspan
-							x='-70'
-							y='1.5'
-						>
-							{'('}
-						</tspan>
-						<tspan
-							x='0'
-							y='6'
-						>
-							{''}
-						</tspan>
-						<tspan
-							x='71'
-							y='1.5'
-						>
-							{')'}
-						</tspan>
+						{stats[0].matchformat}
 					</text>
 				</g>
 				<text
