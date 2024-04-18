@@ -48,7 +48,12 @@ function App() {
 
 	const liveReq = () => {
 		axios
-			.get(`https://twism.vercel.app/ids?compId=${compId}&matchId=${matchId}&test=${test}`)
+			.post('https://twism.vercel.app/ids', null, {
+				params: {
+					matchId,
+					compId,
+				},
+			})
 			.then(function (response) {
 				const res = Object.keys(response.data).map(
 					(key) => response.data[key]
