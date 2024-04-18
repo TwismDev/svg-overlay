@@ -48,7 +48,7 @@ function App() {
 
 	const liveReq = () => {
 		axios
-			.post('https://twism.vercel.app/ids', null, {
+			.post('https://twism.vercel.app/drid', null, {
 				params: {
 					matchId,
 					compId,
