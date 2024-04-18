@@ -261,7 +261,7 @@ const SvgTeam = ({ stats }) => {
 						data-name='raceto'
 						transform='matrix(.7 0 0 1 803.48 58.55)'
 					>
-						{stats[0].matchformat}
+						{stats[0] ? stats[0].matchformat : ''}
 					</text>
 				</g>
 				<text
