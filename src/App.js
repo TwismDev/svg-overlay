@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { experimental_useEffectEvent as useEffectEvent } from 'react'
 import './home.css'
 import { RadioCard } from './components/RadioCard'
@@ -14,6 +14,8 @@ import { useLocation } from 'react-router-dom'
 import * as temp from './stats.json'
 import Ably from 'ably/promises'
 import { SvgRmu } from './components/SvgRmu'
+import { database } from '../firebaseConfig'
+import { ref, set, remove, onValue, off } from 'firebase/database'
 
 function App() {
 	const {
@@ -37,6 +39,7 @@ function App() {
 	const compId = new URLSearchParams(location.search).get('compId')
 	const matchId = new URLSearchParams(location.search).get('matchId')
 	const test = new URLSearchParams(location.search).get('test')
+	const local = new URLSearchParams(location.search).get('local')
 
 	useEffect(() => {
 		if (test === 1 || test === '1') {
@@ -82,9 +85,9 @@ function App() {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			if (playSite === true) {
+			if (playSite === true && local === false) {
 				testReq()
-			} else if (playSite === false) {
+			} else if (playSite === false && local === false) {
 				liveReq()
 			}
 		}, 10000)
@@ -93,6 +96,19 @@ function App() {
 			clearInterval(interval)
 		}
 	}, [matchId, compId, playSite])
+
+	useEffect(() => {
+		if (local === true) {
+			const databaseRef = ref(database, matchId)
+
+			const unsubscribe = onValue(databaseRef, (snapshot) => {
+				const data = snapshot.val()
+				setStats(data)
+			})
+
+			return () => off(databaseRef, 'value', unsubscribe)
+		}
+	}, [matchId, local])
 
 	return (
 		<>
@@ -104,7 +120,7 @@ function App() {
 				</style>
 			</Helmet>
 			<div className='container-3'>
-				<SvgTeam stats={stats} />
+				<SvgTeam stats={stats} local={local} />
 			</div>
 		</>
 	)

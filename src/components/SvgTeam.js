@@ -4,7 +4,7 @@ import ProgressBar from '@ramonak/react-progress-bar'
 import '../home.css'
 import { useGlobalContext } from './Context'
 
-const SvgTeam = ({ stats }) => {
+const SvgTeam = ({ stats, local }) => {
 	const [useExt, setUseExt] = useState(false)
 
 	return (
@@ -178,7 +178,7 @@ const SvgTeam = ({ stats }) => {
 						x={0}
 						y={0}
 					>
-						{stats[0] ? stats[0].hometeamlabel : ''}
+						{local === true ? stats.name : stats[0] ? stats[0].hometeamlabel : ''}
 					</tspan>
 				</text>
 				<text
@@ -198,7 +198,7 @@ const SvgTeam = ({ stats }) => {
 						x={0}
 						y={0}
 					>
-						{stats[0] ? stats[0].awayteamlabel : ''}
+						{local === true ? stats.opponent : stats[0] ? stats[0].awayteamlabel : ''}
 					</tspan>
 				</text>
 				<text
@@ -218,7 +218,7 @@ const SvgTeam = ({ stats }) => {
 						x={0}
 						y={0}
 					>
-						{stats[0] ? stats[0].awayscore : ''}
+						{local === true ? stats.ghostScore : stats[0] ? stats[0].awayscore : ''}
 					</tspan>
 				</text>
 				<text
@@ -238,7 +238,7 @@ const SvgTeam = ({ stats }) => {
 						x={0}
 						y={0}
 					>
-						{stats[0] ? stats[0].homescore : ''}
+						{local === true ? stats.playerScore : stats[0] ? stats[0].homescore : ''}
 					</tspan>
 				</text>
 				<g
@@ -261,7 +261,8 @@ const SvgTeam = ({ stats }) => {
 						data-name='raceto'
 						transform='matrix(.7 0 0 1 803.48 58.55)'
 					>
-						{stats[0] ? stats[0].matchformat : ''}
+						{local === true ? '50 Frames' :
+							stats[0] ? stats[0].matchformat : ''}
 					</text>
 				</g>
 				<text
@@ -281,7 +282,7 @@ const SvgTeam = ({ stats }) => {
 						x={0}
 						y={0}
 					>
-						{stats[0] ? stats[0].venuename : ''}
+						{ local === true ? '' : stats[0] ? stats[0].venuename : ''}
 					</tspan>
 				</text>
 				<text
@@ -301,7 +302,7 @@ const SvgTeam = ({ stats }) => {
 						x={0}
 						y={0}
 					>
-						{stats[0] ? stats[0].compname : ''}
+						{local === true ? '' : stats[0] ? stats[0].compname : ''}
 					</tspan>
 				</text>
 			</svg>
