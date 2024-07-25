@@ -14,8 +14,8 @@ import { useLocation } from 'react-router-dom'
 import * as temp from './stats.json'
 import Ably from 'ably/promises'
 import { SvgRmu } from './components/SvgRmu'
-import { database } from '../firebaseConfig'
 import { ref, set, remove, onValue, off } from 'firebase/database'
+import { database } from './firebaseConfig'
 
 function App() {
 	const {
