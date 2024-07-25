@@ -1,11 +1,51 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ProgressBar from '@ramonak/react-progress-bar'
 import '../home.css'
 import { useGlobalContext } from './Context'
 
-const SvgTeam = ({ stats, local }) => {
+const SvgTeam = ({ stats, local, matchId }) => {
 	const [useExt, setUseExt] = useState(false)
+	const [framesText, setFramesText] = useState(null)
+	const framesLength = 185
+	const [p1Text, setp1Text] = useState(null)
+	const p1Length = 701
+	const [p2Text, setp2Text] = useState(null)
+	const [venueNameText, setVenueNameText] = useState(null)
+	const venueNameLength = 700
+	const [compNameText, setCompNameText] = useState(null)
+	const compNameLlength = 700
+
+	const calculateTextLength = () => {
+		const frames = document.getElementById('frames');
+		if (frames) {
+		  const computedLength = frames.getComputedTextLength();
+		  setFramesText(computedLength > framesLength ? framesLength : null);
+		}
+		const p1Text = document.getElementById('p1Text')
+		if (p1Text) {
+			const computedLength = p1Text.getComputedTextLength();
+			setp1Text(computedLength > p1Length ? p1Length : null);
+		}
+		const p2Text = document.getElementById('awayTeamLabel')
+		if (p2Text) {
+			const computedLength = p2Text.getComputedTextLength();
+			setp2Text(computedLength > p1Length ? p1Length : null);
+		}
+		const venueName = document.getElementById('venueName')
+		if (venueName) {
+			const computedLength = venueName.getComputedTextLength();
+			setVenueNameText(computedLength > venueNameLength ? venueNameLength : null);
+		}
+
+		const compNameText = document.getElementById('compName')
+		if (compNameText) {
+			const computedLength = compNameText.getComputedTextLength();
+			setCompNameText(computedLength > compNameLlength ? compNameLlength : null);
+		}
+	}
+
+	useEffect(() =>	{calculateTextLength()}, [matchId, local, p1Length, framesLength])
 
 	return (
 		<>
@@ -172,13 +212,16 @@ const SvgTeam = ({ stats, local }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
+					id='p1Text'
 					transform='matrix(.7 0 0 1 288.55 62.4)'
+					textLength={p1Text}
+  					lengthAdjust='spacingAndGlyphs'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{local === true ? stats.name : stats[0] ? stats[0].hometeamlabel : ''}
+						{local === 'true' ? stats.name : stats[0] ? stats[0].hometeamlabel : ''}
 					</tspan>
 				</text>
 				<text
@@ -193,12 +236,15 @@ const SvgTeam = ({ stats, local }) => {
 						textAnchor: 'middle',
 					}}
 					transform='matrix(.7 0 0 1 1318.93 62.4)'
+					textLength={p1Text}
+  					lengthAdjust='spacingAndGlyphs'
+					id='awayTeamLabel'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{local === true ? stats.opponent : stats[0] ? stats[0].awayteamlabel : ''}
+						{local === 'true' ? stats.opponent : stats[0] ? stats[0].awayteamlabel : ''}
 					</tspan>
 				</text>
 				<text
@@ -218,7 +264,7 @@ const SvgTeam = ({ stats, local }) => {
 						x={0}
 						y={0}
 					>
-						{local === true ? stats.ghostScore : stats[0] ? stats[0].awayscore : ''}
+						{local === 'true' ? stats.ghostScore : stats[0] ? stats[0].awayscore : ''}
 					</tspan>
 				</text>
 				<text
@@ -238,7 +284,7 @@ const SvgTeam = ({ stats, local }) => {
 						x={0}
 						y={0}
 					>
-						{local === true ? stats.playerScore : stats[0] ? stats[0].homescore : ''}
+						{local === 'true' ? stats.playerScore : stats[0] ? stats[0].homescore : ''}
 					</tspan>
 				</text>
 				<g
@@ -258,10 +304,12 @@ const SvgTeam = ({ stats, local }) => {
 							verticalAlign: 'middle',
 							textAnchor: 'middle',
 						}}
-						data-name='raceto'
 						transform='matrix(.7 0 0 1 803.48 58.55)'
+						id='frames'
+						textLength={framesText}
+  						lengthAdjust='spacingAndGlyphs'
 					>
-						{local === true ? '50 Frames' :
+						{local === 'true' ? '50 Frames' :
 							stats[0] ? stats[0].matchformat : ''}
 					</text>
 				</g>
@@ -277,12 +325,15 @@ const SvgTeam = ({ stats, local }) => {
 						textAnchor: 'middle',
 					}}
 					transform='matrix(.7 0 0 1 275.78 153.91)'
+					textLength={venueNameText}
+  					lengthAdjust='spacingAndGlyphs'
+					id='venueName'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{ local === true ? '' : stats[0] ? stats[0].venuename : ''}
+						{ local === 'true' ? '' : stats[0] ? stats[0].venuename : ''}
 					</tspan>
 				</text>
 				<text
@@ -296,13 +347,16 @@ const SvgTeam = ({ stats, local }) => {
 						textAlign: 'center',
 						textAnchor: 'middle',
 					}}
+					textLength={compNameText}
+  					lengthAdjust='spacingAndGlyphs'
 					transform='matrix(.7 0 0 1 1325.16 156.43)'
+					id='compName'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{local === true ? '' : stats[0] ? stats[0].compname : ''}
+						{local === 'true' ? '' : stats[0] ? stats[0].compname : ''}
 					</tspan>
 				</text>
 			</svg>

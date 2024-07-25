@@ -85,9 +85,9 @@ function App() {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			if (playSite === true && local === false) {
+			if (playSite === true && local === 'false') {
 				testReq()
-			} else if (playSite === false && local === false) {
+			} else if (playSite === false && local === 'false') {
 				liveReq()
 			}
 		}, 10000)
@@ -98,12 +98,14 @@ function App() {
 	}, [matchId, compId, playSite])
 
 	useEffect(() => {
-		if (local === true) {
+		console.log(local, matchId)
+		if (local === 'true') {
 			const databaseRef = ref(database, `matches/${matchId}`)
 
 			const unsubscribe = onValue(databaseRef, (snapshot) => {
 				const data = snapshot.val()
 				setStats(data)
+				console.log(data)
 			})
 
 			return () => off(databaseRef, 'value', unsubscribe)
@@ -120,7 +122,7 @@ function App() {
 				</style>
 			</Helmet>
 			<div className='container-3'>
-				<SvgTeam stats={stats} local={local} />
+				<SvgTeam stats={stats} local={local} matchId={matchId} />
 			</div>
 		</>
 	)
