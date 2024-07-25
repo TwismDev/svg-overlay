@@ -99,7 +99,7 @@ function App() {
 
 	useEffect(() => {
 		if (local === true) {
-			const databaseRef = ref(database, matchId)
+			const databaseRef = ref(database, `matches/${matchId}`)
 
 			const unsubscribe = onValue(databaseRef, (snapshot) => {
 				const data = snapshot.val()
