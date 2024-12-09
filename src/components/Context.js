@@ -18,37 +18,16 @@ const AppProvider = ({ children }) => {
 	const [matchId, setMatchId] = useState('')
 	const [compId, setCompId] = useState('')
 	const [selected, setSelected] = useState('Single')
+	const [local, setLocal] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 	const [postDone, setPostDone] = useState(false)
 	const [message, setMessage] = useState()
 	const [copy, setCopy] = useState('')
 	const [stats, setStats] = useState([])
 	const [id, setId] = useState(null)
-	const [isLandscape, setIsLandscape] = useState(false)
-
-
-	useEffect(() => {
-		const client = new Ably.Realtime('dAlvWQ.Y-FDSg:Mpe_A2p5sBEDxMcKVb9n2A3r-qOkZbpTf1qtu_y62-8')
-		const channel = client.channels.get('ids')
-		function subscribe() {
-			channel.subscribe(message => {
-				if (message.data.matchId) {
-					setMatchId(message.data.matchId)
-				}
-				if (message.data.compId) {
-					setCompId(message.data.compId)
-				}
-				if (message.data.landscape && message.data.landscape == true) {
-					setIsLandscape(true)
-				}
-			})
-		}
-		subscribe()
-
-		return function cleanup() {
-			channel.unsubscribe()
-		}
-	}, [])
+	const [landscape, setLandscape] = useState(false)
+	const [playSite, setPlaySite] = useState(false)
+	const [test, setTest] = useState('')
 
 	return (
 		<AppContext.Provider
@@ -89,8 +68,14 @@ const AppProvider = ({ children }) => {
 				setCompId,
 				id,
 				setId,
-				isLandscape,
-				setIsLandscape
+				landscape,
+				setLandscape,
+				local,
+				setLocal,
+				playSite,
+				setPlaySite,
+				test,
+				setTest,
 			}}>
 
 			{children}

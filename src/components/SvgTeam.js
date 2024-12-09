@@ -1,61 +1,78 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import ProgressBar from '@ramonak/react-progress-bar'
-import '../home.css'
-import { useGlobalContext } from './Context'
+import React from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import ProgressBar from '@ramonak/react-progress-bar';
+import '../home.css';
+import { useGlobalContext } from './Context';
+import throttle from 'lodash/throttle';
 
-const SvgTeam = ({ stats, local, matchId }) => {
-	const [useExt, setUseExt] = useState(false)
-	const [framesText, setFramesText] = useState(null)
-	const framesLength = 185
-	const [p1Text, setp1Text] = useState(null)
-	const p1Length = 701
-	const [p2Text, setp2Text] = useState(null)
-	const [venueNameText, setVenueNameText] = useState(null)
-	const venueNameLength = 700
-	const [compNameText, setCompNameText] = useState(null)
-	const compNameLlength = 700
+const SvgTeam = () => {
+	const { stats, local, matchId, compId, test } = useGlobalContext();
+	const [useExt, setUseExt] = useState(false);
+	const [framesText, setFramesText] = useState(null);
+	const framesLength = 185;
+	const [p1Text, setp1Text] = useState(null);
+	const p1Length = 701;
+	const [p2Text, setp2Text] = useState(null);
+	const [venueNameText, setVenueNameText] = useState(null);
+	const venueNameLength = 700;
+	const [compNameText, setCompNameText] = useState(null);
+	const compNameLlength = 700;
 
-	const calculateTextLength = () => {
-		const frames = document.getElementById('frames');
-		if (frames) {
-		  const computedLength = frames.getComputedTextLength();
-		  setFramesText(computedLength > framesLength ? framesLength : null);
-		}
-		const p1Text = document.getElementById('p1Text')
-		if (p1Text) {
-			const computedLength = p1Text.getComputedTextLength();
-			setp1Text(computedLength > p1Length ? p1Length : null);
-		}
-		const p2Text = document.getElementById('awayTeamLabel')
-		if (p2Text) {
-			const computedLength = p2Text.getComputedTextLength();
-			setp2Text(computedLength > p1Length ? p1Length : null);
-		}
-		const venueName = document.getElementById('venueName')
-		if (venueName) {
-			const computedLength = venueName.getComputedTextLength();
-			setVenueNameText(computedLength > venueNameLength ? venueNameLength : null);
-		}
+	const calculateTextLength = useCallback(
+		throttle(() => {
+			const frames = document.getElementById('frames');
+			if (frames) {
+				const computedLength = frames.getComputedTextLength();
+				setFramesText(computedLength > framesLength ? framesLength : null);
+			}
+			const p1Text = document.getElementById('p1Text');
+			if (p1Text) {
+				const computedLength = p1Text.getComputedTextLength();
+				setp1Text(computedLength > p1Length ? p1Length : null);
+			}
+			const p2Text = document.getElementById('awayTeamLabel');
+			if (p2Text) {
+				const computedLength = p2Text.getComputedTextLength();
+				setp2Text(computedLength > p1Length ? p1Length : null);
+			}
+			const venueName = document.getElementById('venueName');
+			if (venueName) {
+				const computedLength = venueName.getComputedTextLength();
+				setVenueNameText(
+					computedLength > venueNameLength ? venueNameLength : null
+				);
+			}
 
-		const compNameText = document.getElementById('compName')
-		if (compNameText) {
-			const computedLength = compNameText.getComputedTextLength();
-			setCompNameText(computedLength > compNameLlength ? compNameLlength : null);
-		}
-	}
+			const compNameText = document.getElementById('compName');
+			if (compNameText) {
+				const computedLength = compNameText.getComputedTextLength();
+				setCompNameText(
+					computedLength > compNameLlength ? compNameLlength : null
+				);
+			}
+		}, 300),
+		[matchId, local, p1Length, framesLength]
+	);
 
-	useEffect(() =>	{calculateTextLength()}, [matchId, local, p1Length, framesLength])
+	useEffect(() => {
+		calculateTextLength();
+	}, [matchId, local, p1Length, framesLength, calculateTextLength]);
+
+	const calculateProgress = () => {
+		if (!stats[0]?.timer || !stats[0]?.totalTime) return 0;
+		return (stats.timer / stats.totalTime) * 100; // Calculate progress as a percentage
+	};
 
 	return (
 		<>
 			<div>
 				<ProgressBar
-					completed={1}
+					completed={calculateProgress()}
 					height='46'
 					width='218'
 					borderRadius='20px'
 					isLabelVisible={false}
+                    customLabel={stats.timer}
 				/>
 			</div>
 			<svg
@@ -63,8 +80,9 @@ const SvgTeam = ({ stats, local, matchId }) => {
 				xmlnsXlink='http://www.w3.org/1999/xlink'
 				data-name='Layer 1'
 				viewBox='0 0 1604.39 179.64'
-				style={{ transform: 'scaleY(0.9)' }}
-				width='90%'
+				style={{ transform: 'scaleY(0.9)', transform: 'scaleX(1.3)' }}
+				width='70vw'
+				height='auto'
 			>
 				<defs>
 					<linearGradient
@@ -215,13 +233,16 @@ const SvgTeam = ({ stats, local, matchId }) => {
 					id='p1Text'
 					transform='matrix(.7 0 0 1 288.55 62.4)'
 					textLength={p1Text}
-  					lengthAdjust='spacingAndGlyphs'
+					lengthAdjust='spacingAndGlyphs'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{local === 'true' ? stats.name : stats[0] ? stats[0].hometeamlabel : ''}
+						{local === 'true' || local === true
+							? stats?.home?.name
+							: stats[0]?.hometeamlabel
+							}
 					</tspan>
 				</text>
 				<text
@@ -236,15 +257,18 @@ const SvgTeam = ({ stats, local, matchId }) => {
 						textAnchor: 'middle',
 					}}
 					transform='matrix(.7 0 0 1 1318.93 62.4)'
-					textLength={p1Text}
-  					lengthAdjust='spacingAndGlyphs'
+					textLength={p2Text}
+					lengthAdjust='spacingAndGlyphs'
 					id='awayTeamLabel'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{local === 'true' ? stats.opponent : stats[0] ? stats[0].awayteamlabel : ''}
+						{local === 'true' || local === true
+							? stats?.away?.name
+							: stats[0]?.awayteamlabel
+						}
 					</tspan>
 				</text>
 				<text
@@ -264,7 +288,10 @@ const SvgTeam = ({ stats, local, matchId }) => {
 						x={0}
 						y={0}
 					>
-						{local === 'true' ? stats.ghostScore : stats[0] ? stats[0].awayscore : ''}
+						{local === 'true' || local === true
+							? stats?.away?.score
+							: stats[0]?.awayscore
+						}
 					</tspan>
 				</text>
 				<text
@@ -284,7 +311,10 @@ const SvgTeam = ({ stats, local, matchId }) => {
 						x={0}
 						y={0}
 					>
-						{local === 'true' ? stats.playerScore : stats[0] ? stats[0].homescore : ''}
+						{local === 'true' || local === true
+							? stats?.home?.score
+							: stats[0]?.homescore
+						}
 					</tspan>
 				</text>
 				<g
@@ -307,10 +337,12 @@ const SvgTeam = ({ stats, local, matchId }) => {
 						transform='matrix(.7 0 0 1 803.48 58.55)'
 						id='frames'
 						textLength={framesText}
-  						lengthAdjust='spacingAndGlyphs'
+						lengthAdjust='spacingAndGlyphs'
 					>
-						{local === 'true' ? '50 Frames' :
-							stats[0] ? stats[0].matchformat : ''}
+						{local === 'true' || local === true
+							? stats?.raceLength
+							: stats[0]?.matchformat
+						}
 					</text>
 				</g>
 				<text
@@ -326,14 +358,14 @@ const SvgTeam = ({ stats, local, matchId }) => {
 					}}
 					transform='matrix(.7 0 0 1 275.78 153.91)'
 					textLength={venueNameText}
-  					lengthAdjust='spacingAndGlyphs'
+					lengthAdjust='spacingAndGlyphs'
 					id='venueName'
 				>
 					<tspan
 						x={0}
 						y={0}
 					>
-						{ local === 'true' ? '' : stats[0] ? stats[0].venuename : ''}
+						{local === 'true' || local === true ? '' : stats[0] ? stats?.venueabbr : ''}
 					</tspan>
 				</text>
 				<text
@@ -348,7 +380,7 @@ const SvgTeam = ({ stats, local, matchId }) => {
 						textAnchor: 'middle',
 					}}
 					textLength={compNameText}
-  					lengthAdjust='spacingAndGlyphs'
+					lengthAdjust='spacingAndGlyphs'
 					transform='matrix(.7 0 0 1 1325.16 156.43)'
 					id='compName'
 				>
@@ -356,15 +388,15 @@ const SvgTeam = ({ stats, local, matchId }) => {
 						x={0}
 						y={0}
 					>
-						{local === 'true' ? '' : stats[0] ? stats[0].compname : ''}
+						{local === 'true' || local === true ? '' : stats[0] ? stats?.compname : ''}
 					</tspan>
 				</text>
 			</svg>
 		</>
-	)
-}
-// {stats[0].awayframepointsadj===0 && stats[0].awayscorepoints===0 ? stats[0].awayscore : `${awayScore}`}
-// {stats[0].homeframepointsadj===0 && stats[0].homescorepoints===0 ? stats[0].homescore : `${homeScore}`}
-// {stats[0].homescorepoints>0 ? `${stats[0].homescore}` : ''}
-// {stats[0].awayscorepoints>0 ? `${stats[0].awayscore}` : ''}
-export { SvgTeam }
+	);
+};
+// {stats[0]?.awayframepointsadj===0 && stats[0]?.awayscorepoints===0 ? stats?.awayscore : `${awayScore}`}
+// {stats[0]?.homeframepointsadj===0 && stats[0]?.homescorepoints===0 ? stats?.homescore : `${homeScore}`}
+// {stats[0]?.homescorepoints>0 ? `${stats[0]?.homescore}` : ''}
+// {stats[0]?.awayscorepoints>0 ? `${stats[0]?.awayscore}` : ''}
+export { SvgTeam };

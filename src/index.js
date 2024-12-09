@@ -14,13 +14,13 @@ library.add(faCircleCheck, faSpinner)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <Router>
-    <React.StrictMode>
-      <AppProvider>
-        <App />
-      </AppProvider>
-    </React.StrictMode>
-  </Router>
+    <Router>
+        <React.StrictMode>
+            <AppProvider>
+                <App />
+            </AppProvider>
+        </React.StrictMode>
+    </Router>
 )
 
 // If you want to start measuring performance in your app, pass a function

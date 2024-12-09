@@ -14,6 +14,16 @@
 }
 
 .container {
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .container-hidden {
+	opacity: 0;
+	transform: translateY(20px);
+  }
+  
+
+.container {
 	width: 90%;
 }
 .text-center {
@@ -221,6 +231,14 @@ div.matchIdInput {
 	text-shadow: 0.2px 0.2px 0.2px #000;
 }
 
+.container-4 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	
+}
+
 .main-container {
 	display: grid;
 	text-align: center;
@@ -231,23 +249,53 @@ div.matchIdInput {
 	height: 100%;
 	width: 100%;
 }
+.container {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.container-exit {
+    opacity: 0;
+    transform: translateY(20px); /* Example: move down slightly */
+}
+
+.container-enter {
+    opacity: 1;
+    transform: translateY(0); /* Reset transform */
+}
 .container-3 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh; /* Set the height of the container to the full viewport height */
+	position: absolute;
+	left: 5%;
+	top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+	width: 25vw;
 }
+
+.container-4 {
+	position:absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: flex-end; */
+    height: 30vh;
+	width: 80vw;
+}
+
 .container-1 {
-	text-align: center;
-	grid-column: 2 / 2;
-	grid-row: 1 / 1;
-	justify-self: center;
-	align-items: center;
-	margin-top: -55px;
-	margin-left: 4px;
-	margin-bottom: 80px;
-	text-shadow: 0.2px 0.2px 0.2px #000;
+    text-align: center;
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
+    justify-self: center;
+    align-items: center;
+    margin-top: -55px;
+    margin-left: 4px;
+    margin-bottom: 80px;
+    text-shadow: 0.2px 0.2px 0.2px #000;
 }
+
 
 .form {
 	text-align: center;
