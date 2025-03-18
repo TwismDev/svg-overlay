@@ -39,16 +39,18 @@ export default function Handler ()
 	const [ searchParams ] = useSearchParams();
 	const compId = searchParams.get( 'compId' );
 	const matchId = searchParams.get( 'matchId' );
+	const isLandscape = searchParams.get( 'isLandscape' );
 	const test = 0
 	const local = 'false'
 
 	useEffect( () =>
 	{
+		setLandscape( isLandscape );
 		setCompId( compId );
 		setMatchId( matchId );
 		setLocal( local );
 		setTest( test );
-	}, [ compId, matchId, local, test ] );
+	}, [ compId, matchId, local, test, isLandscape ] );
 
 	useEffect( () =>
 	{
